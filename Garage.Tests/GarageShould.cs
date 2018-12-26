@@ -103,5 +103,6 @@ namespace Garage.Tests
             //Assert
             Assert.False(vehicleRemoved);
         }
+
     }
 }

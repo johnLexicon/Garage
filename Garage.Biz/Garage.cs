@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Garage.Biz.Vehicles;
 
 namespace Garage.Biz
@@ -103,6 +104,14 @@ namespace Garage.Biz
         {
             get => vehiclesCollection[index];
             private set => vehiclesCollection[index] = value;
+        }
+
+        //TODO: Test this!!!
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            this.ToList<T>().ForEach(v => sb.Append(nameof(v)));
+            return sb.ToString();
         }
     }
 }
