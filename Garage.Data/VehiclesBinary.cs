@@ -22,13 +22,17 @@ namespace Garage.Data
             return vehicles;
         }
 
-        public void SaveAllVehicles(Vehicle[] vehicles)
+        public bool SaveAllVehicles(Vehicle[] vehicles)
         {
+            bool isSaved = false;
             IFormatter formatter = new BinaryFormatter();
             using (Stream stream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 formatter.Serialize(stream, vehicles);
+                isSaved = true;
             }
+
+            return isSaved;
         }
     }
 }

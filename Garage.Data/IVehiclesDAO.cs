@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Garage.Data
 {
-    interface IVehiclesDAO
+    public interface IVehiclesDAO
     {
-        void SaveAllVehicles(Vehicle[] vehicles);
+        bool SaveAllVehicles(Vehicle[] vehicles);
         Vehicle[] RetrieveAllVehicles();
     }
 }
