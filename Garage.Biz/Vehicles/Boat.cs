@@ -1,4 +1,6 @@
-﻿namespace Garage.Biz.Vehicles
+﻿using System;
+
+namespace Garage.Biz.Vehicles
 {
     [Serializable]
     public class Boat : Vehicle
