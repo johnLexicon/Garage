@@ -11,7 +11,13 @@ namespace Garage.Cmd
 
         static void Main(string[] args)
         {
-            garageHandler = CreateGarageMenu.Instance.CreateGarage();
+            bool quit = CreateGarageMenu.Instance.CreateGarageOrQuit(garageHandler);
+
+            if (quit)
+            {
+                Console.WriteLine("Program ends.");
+                return;
+            }
 
             string mainMenu = CmdUtils.ReadTextFile(_headMenuPath);
             string option = null;
@@ -51,6 +57,8 @@ namespace Garage.Cmd
                         break;
                 }
             } while (!option.Equals("0"));
+
+            Console.WriteLine("Program ends.");
         }
     }
 }

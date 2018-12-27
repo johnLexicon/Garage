@@ -15,6 +15,8 @@ namespace Garage.Biz
             garage = new Garage<T>(garageCapacity);
         }
 
+        public int GarageCapacity { get => garage.Capacity; }
+
         public bool Add(T vehicle)
         {
             return garage.Add(vehicle);
