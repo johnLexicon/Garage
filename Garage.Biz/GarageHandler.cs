@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Garage.Biz.Vehicles;
 
 namespace Garage.Biz
@@ -27,6 +28,25 @@ namespace Garage.Biz
         public T Find(string regNr)
         {
             return garage.FirstOrDefault(v => v.RegNr.Equals(regNr));
+        }
+
+        //TODO: Try to solve this!!!
+        public IEnumerable<T> FindVehiclesByPropertyValues(List<Tuple<string, string >> props)
+        {
+
+            List<string> found = new List<string>();
+
+            foreach(var vehicle in garage)
+            {
+                PropertyInfo pInfo = vehicle.GetType().GetProperty("Color");
+                if(pInfo != null)
+                {
+                    var value = pInfo.GetValue(vehicle);
+                    var content = "whatever";
+                }
+            }
+
+            return garage;
         }
 
         //TODO: Maybe change this to enumerable instead of returning a list.
