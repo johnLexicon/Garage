@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Garage.Biz.Vehicles;
 
@@ -28,9 +29,15 @@ namespace Garage.Biz
             return garage.FirstOrDefault(v => v.RegNr.Equals(regNr));
         }
 
+        //TODO: Maybe change this to enumerable instead of returning a list.
         public ICollection<T> GetAll()
         {
             return garage.ToList();
+        }
+
+        public IEnumerable<IGrouping<Type, T>>  GetVehiclesGroupedByType()
+        {
+            return garage.GroupBy(v => v.GetType());
         }
 
         public override string ToString()
