@@ -1,6 +1,9 @@
 ﻿
+using System;
+
 namespace Garage.Biz.Vehicles
 {
+    [Serializable]
     public class Motorcycle : Vehicle
     {
         private short cylinderVol;

@@ -1,6 +1,8 @@
-﻿namespace Garage.Biz.Vehicles
-{
+﻿using System;
 
+namespace Garage.Biz.Vehicles
+{
+    [Serializable]
     public abstract class Vehicle
     {
         private string regNr;

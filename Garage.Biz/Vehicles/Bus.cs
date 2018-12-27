@@ -1,6 +1,7 @@
 ﻿using System;
 namespace Garage.Biz.Vehicles
 {
+    [Serializable]
     public class Bus : Vehicle
     {
         private byte seatsNr;

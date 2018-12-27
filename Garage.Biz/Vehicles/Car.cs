@@ -1,6 +1,7 @@
 ﻿using System;
 namespace Garage.Biz.Vehicles
 {
+    [Serializable]
     public class Car : Vehicle
     {
         private string fuelType;
