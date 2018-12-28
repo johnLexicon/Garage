@@ -1,2 +1,6 @@
-﻿0. Quit
-1. Create Garage
+﻿
+****Create Garage Menu****
+
+0. Quit.
+1. Create Garage.
+

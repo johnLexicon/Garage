@@ -10,5 +10,10 @@ namespace Garage.Biz.Vehicles
         public Boat(string regNr, string color, int wheelsNr, int length) : base(regNr, color, wheelsNr) => Length = length;
 
         public int Length { get => length; set => length = value; }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}, Length: {Length}";
+        }
     }
 }

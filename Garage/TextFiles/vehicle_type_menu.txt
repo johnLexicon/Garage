@@ -1,1 +1,9 @@
-﻿
+﻿****Vehicle type menu****
+
+0. Back to main menu
+1. Airplane
+2. Boat
+3. Bus
+4. Car
+5. Motorcycle
+

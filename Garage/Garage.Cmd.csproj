@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Garage.Biz\Garage.Biz.csproj" />
+    <ProjectReference Include="..\Garage.Common\Garage.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Vehicles\Motorcycle.cs" />
@@ -20,6 +21,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Update="TextFiles\main_menu.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TextFiles\start_menu.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TextFiles\vehicle_type_menu.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -49,6 +49,7 @@ namespace Garage.Cmd
 
         public static string ReadTextFile(string path)
         {
+            Console.WriteLine(path);
             string content = string.Empty;
             try
             {

@@ -11,5 +11,10 @@ namespace Garage.Biz.Vehicles
         public Motorcycle(string regNr, string color, int wheelsNr, int cylinderVol) : base(regNr, color, wheelsNr) => CylinderVol = cylinderVol;
 
         public int CylinderVol { get => cylinderVol; set => cylinderVol = value; }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}, Cylinder volume: {CylinderVol}";
+        }
     }
 }

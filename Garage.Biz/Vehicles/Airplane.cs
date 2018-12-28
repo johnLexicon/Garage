@@ -13,5 +13,10 @@ namespace Garage.Biz.Vehicles
         }
 
         public int EnginesNr { get => enginesNr; set => enginesNr = value; }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}, Number of engines: {EnginesNr}";
+        }
     }
 }

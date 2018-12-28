@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Garage.Biz;
 using Garage.Biz.Vehicles;
 
@@ -7,7 +8,7 @@ namespace Garage.Cmd
     internal class CreateGarageMenu
     {
         private static CreateGarageMenu _instance;
-        private readonly string _startMenuPath = "/Users/johnlundgren/Projects/Garage/Garage/TextFiles/start_menu.txt";
+        private readonly string _startMenuPath = Path.Combine(Environment.CurrentDirectory, "TextFiles", "start_menu.txt");
 
         private CreateGarageMenu()
         {
@@ -25,13 +26,7 @@ namespace Garage.Cmd
             }
         }
 
-        private GarageHandler<Vehicle> CreateGarage()
-        {
-            int capacity = CmdUtils.AskForInteger("Garage capacity: ");
-            return new GarageHandler<Vehicle>(garageCapacity: capacity);
-        }
-
-        internal bool CreateGarageOrQuit(GarageHandler<Vehicle> garageHandler)
+        internal GarageHandler<Vehicle> CreateGarageOrQuit()
         {
             string startMenu = CmdUtils.ReadTextFile(_startMenuPath);
             string answer = string.Empty;
@@ -45,17 +40,18 @@ namespace Garage.Cmd
             //If user wants to quit
             if(answer.Equals("0"))
             {
-                return true;
+                return null;
             }
 
-            garageHandler = CreateGarage();
+            int capacity = CmdUtils.AskForInteger("Garage capacity: ");
+            var garageHandler = new GarageHandler<Vehicle>(garageCapacity: capacity);
 
-            if(garageHandler != null)
+            if (garageHandler != null)
             {
                 Console.WriteLine($"Garage with capacity {garageHandler.GarageCapacity} has been created.");
             }
 
-            return false;
+            return garageHandler;
         }
     }
 }

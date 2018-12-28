@@ -9,5 +9,10 @@ namespace Garage.Biz.Vehicles
         public Bus(string regNr, string color, int wheelsNr, int seatsNr) : base(regNr, color, wheelsNr) => SeatsNr = seatsNr;
 
         public int SeatsNr { get => seatsNr; set => seatsNr = value; }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}, Number of seats: {SeatsNr}";
+        }
     }
 }
