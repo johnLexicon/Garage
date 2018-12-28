@@ -10,10 +10,12 @@ namespace Garage.Cmd
     {
 
         private static AddVehiclesMenu _instance;
+        private readonly string _vehicleTypeMenu;
         private readonly string vehicleTypeMenuPath = Path.Combine(Environment.CurrentDirectory, "TextFiles", "vehicle_type_menu.txt");
 
         private AddVehiclesMenu()
         {
+            _vehicleTypeMenu = CmdUtils.ReadTextFile(vehicleTypeMenuPath);
         }
 
         internal static AddVehiclesMenu Instance
@@ -37,12 +39,12 @@ namespace Garage.Cmd
         {
             Vehicle vehicle = null;
             bool finished = false;
-            string vehicleTypeMenu = CmdUtils.ReadTextFile(vehicleTypeMenuPath);
+            
             string answer = string.Empty;
             do
             {
 
-                Console.WriteLine(vehicleTypeMenu);
+                Console.WriteLine(_vehicleTypeMenu);
                 answer = CmdUtils.AskForString("Choose type of vehicle to create: ");
                 switch (answer)
                 {

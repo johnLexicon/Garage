@@ -11,7 +11,7 @@ namespace Garage.Cmd
     {
         private static RemoveVehiclesMenu _instance;
         private readonly string _removeVehicleMenuPath = Path.Combine(Environment.CurrentDirectory, "TextFiles", "remove_vehicles_menu.txt");
-        private string _removeVehicleMenu;
+        private readonly string _removeVehicleMenu;
 
         private RemoveVehiclesMenu()
         {

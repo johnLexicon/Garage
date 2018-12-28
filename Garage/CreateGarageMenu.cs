@@ -9,9 +9,11 @@ namespace Garage.Cmd
     {
         private static CreateGarageMenu _instance;
         private readonly string _startMenuPath = Path.Combine(Environment.CurrentDirectory, "TextFiles", "start_menu.txt");
+        private readonly string _startMenu;
 
         private CreateGarageMenu()
         {
+            _startMenu = CmdUtils.ReadTextFile(_startMenuPath);
         }
 
         internal static CreateGarageMenu Instance
@@ -28,12 +30,11 @@ namespace Garage.Cmd
 
         internal GarageHandler<Vehicle> CreateGarageOrQuit()
         {
-            string startMenu = CmdUtils.ReadTextFile(_startMenuPath);
             string answer = string.Empty;
             
             do
             {
-                Console.WriteLine(startMenu);
+                Console.WriteLine(_startMenu);
                 answer = CmdUtils.AskForString("Option: ");
             } while (!answer.Equals("0") && !answer.Equals("1"));
 

@@ -10,11 +10,14 @@ namespace Garage.Cmd
 
         private static MainMenu _instance;
         private readonly string _headMenuPath = Path.Combine(Environment.CurrentDirectory, "TextFiles", "main_menu.txt");
+        private readonly string _mainMenu;
         private GarageHandler<Vehicle> _garageHandler = null;
+
 
 
         private MainMenu()
         {
+            _mainMenu = CmdUtils.ReadTextFile(_headMenuPath);
         }
 
         internal static MainMenu Instance
@@ -38,12 +41,11 @@ namespace Garage.Cmd
                 return;
             }
 
-            string mainMenu = CmdUtils.ReadTextFile(_headMenuPath);
             string option = null;
 
             do
             {
-                Console.WriteLine(mainMenu);
+                Console.WriteLine(_mainMenu);
                 option = CmdUtils.AskForString("Option: ");
                 switch (option)
                 {
