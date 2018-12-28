@@ -47,6 +47,24 @@ namespace Garage.Cmd
             return result;
         }
 
+        public static double AskForDouble(string prompt)
+        {
+            bool success = false;
+            double result;
+
+            do
+            {
+                string answer = AskForString(prompt);
+                success = double.TryParse(answer, out result);
+                if (!success)
+                {
+                    Console.WriteLine("A decimal value please!!");
+                }
+            } while (!success);
+
+            return result;
+        }
+
         public static string ReadTextFile(string path)
         {
             Console.WriteLine(path);

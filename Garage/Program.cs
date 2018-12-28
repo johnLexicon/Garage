@@ -12,7 +12,6 @@ namespace Garage.Cmd
         {
          
             MainMenu.Instance.ShowMenu();
-     
 
             Console.WriteLine("Program ends.");
         }

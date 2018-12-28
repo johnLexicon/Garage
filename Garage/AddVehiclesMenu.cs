@@ -30,14 +30,10 @@ namespace Garage.Cmd
 
         internal void AddVehicles(GarageHandler<Vehicle> garageHandler)
         {
-            Vehicle newVehicle = CreateVehicle();
-            if(newVehicle != null)
-            {
-                garageHandler.Add(newVehicle);
-            }
+            CreateAndAddVehicle(garageHandler);
         }
 
-        private Vehicle CreateVehicle()
+        private void CreateAndAddVehicle(GarageHandler<Vehicle> garageHandler)
         {
             Vehicle vehicle = null;
             bool finished = false;
@@ -57,30 +53,35 @@ namespace Garage.Cmd
                     case "1":
                         //Airplane
                         vehicle = CreateAirplane();
+                        garageHandler.Add(vehicle);
                         break;
                     case "2":
                         //Boat
                         vehicle = CreateBoat();
+                        garageHandler.Add(vehicle);
                         break;
                     case "3":
                         //Bus
                         vehicle = CreateBus();
+                        garageHandler.Add(vehicle);
                         break;
                     case "4":
                         //Car
                         vehicle = CreateCar();
+                        garageHandler.Add(vehicle);
                         break;
                     case "5":
                         //MotorCycle
                         vehicle = CreateMotorcycle();
+                        garageHandler.Add(vehicle);
                         break;
                     default:
                         Console.WriteLine($"{answer} is not an option!!");
                         break;
                 }
+
             } while (!finished);
 
-            return vehicle;
         }
 
         private VehicleBaseProperties GetBaseProperties()
@@ -101,22 +102,30 @@ namespace Garage.Cmd
 
         private Vehicle CreateCar()
         {
-            return new Car("DKL325", "Green", 2, "Diesel");
+            var baseProps = GetBaseProperties();
+            string fuelType = CmdUtils.AskForString("Fuel type: ");
+            return new Car(baseProps.RegNr, baseProps.Color, baseProps.WheelsNr, fuelType);
         }
 
         private Vehicle CreateBus()
         {
-            return new Bus("DKL325", "Green", 2, 30);
+            var baseProps = GetBaseProperties();
+            int seatsNr = CmdUtils.AskForInteger("Number of seats: ");
+            return new Bus(baseProps.RegNr, baseProps.Color, baseProps.WheelsNr, seatsNr);
         }
 
         private Vehicle CreateBoat()
         {
-            return new Boat("DKL325", "Green", 2, 230);
+            var baseProps = GetBaseProperties();
+            double length = CmdUtils.AskForDouble("Boat length: ");
+            return new Boat(baseProps.RegNr, baseProps.Color, baseProps.WheelsNr, length);
         }
 
         private Vehicle CreateAirplane()
         {
-            return new Airplane("DKL325", "Green", 2, 4);
+            var baseProps = GetBaseProperties();
+            int enginesNr = CmdUtils.AskForInteger("Number of engines: ");
+            return new Airplane(baseProps.RegNr, baseProps.Color, baseProps.WheelsNr, enginesNr);
         }
     }
 }
