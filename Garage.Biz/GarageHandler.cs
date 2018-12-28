@@ -17,8 +17,15 @@ namespace Garage.Biz
 
         public int GarageCapacity { get => garage.Capacity; }
 
+        public int SpacesAvailable { get => garage.SpacesAvailable; }
+
         public bool Add(T vehicle)
         {
+            if(garage.SpacesAvailable == 0)
+            {
+                throw new GarageIsFullException("The garage is already full.");
+            }
+
             return garage.Add(vehicle);
         }
 
@@ -39,7 +46,8 @@ namespace Garage.Biz
 
         public T Find(string regNr)
         {
-            return garage.FirstOrDefault(v => v.RegNr.Equals(regNr));
+            var result = garage.Where(v => v != null);
+            return result.FirstOrDefault(v => v.RegNr.Equals(regNr));
         }
 
         //TODO: Try to solve this!!!
