@@ -53,27 +53,27 @@ namespace Garage.Cmd
                     case "1":
                         //Airplane
                         vehicle = CreateAirplane();
-                        garageHandler.Add(vehicle);
+                        AddVehicle(garageHandler, vehicle);
                         break;
                     case "2":
                         //Boat
                         vehicle = CreateBoat();
-                        garageHandler.Add(vehicle);
+                        AddVehicle(garageHandler, vehicle);
                         break;
                     case "3":
                         //Bus
                         vehicle = CreateBus();
-                        garageHandler.Add(vehicle);
+                        AddVehicle(garageHandler, vehicle);
                         break;
                     case "4":
                         //Car
                         vehicle = CreateCar();
-                        garageHandler.Add(vehicle);
+                        AddVehicle(garageHandler, vehicle);
                         break;
                     case "5":
                         //MotorCycle
                         vehicle = CreateMotorcycle();
-                        garageHandler.Add(vehicle);
+                        AddVehicle(garageHandler, vehicle);
                         break;
                     default:
                         Console.WriteLine($"{answer} is not an option!!");
@@ -82,6 +82,18 @@ namespace Garage.Cmd
 
             } while (!finished);
 
+        }
+
+        private void AddVehicle(GarageHandler<Vehicle> garageHandler, Vehicle vehicle)
+        {
+            try
+            {
+                garageHandler.Add(vehicle);
+            }
+            catch (GarageIsFullException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         private VehicleBaseProperties GetBaseProperties()

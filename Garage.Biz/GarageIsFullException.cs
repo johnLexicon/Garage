@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Garage.Biz
 {
     [Serializable]
-    internal class GarageIsFullException : Exception
+    public class GarageIsFullException : Exception
     {
         public GarageIsFullException()
         {
