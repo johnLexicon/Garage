@@ -54,7 +54,7 @@ namespace Garage.Biz
         //TODO: Maybe change this to enumerable instead of returning a list.
         public ICollection<T> GetAll()
         {
-            return garage.ToList();
+            return garage.Where(v => v != null).ToList();
         }
 
         public IEnumerable<IGrouping<Type, T>>  GetVehiclesGroupedByType()
