@@ -64,6 +64,7 @@ namespace Garage.Cmd
                         break;
                     case "4":
                         //Remove vehicles
+                        RemoveVehiclesMenu.Instance.RemoveVehicles(_garageHandler);
                         break;
                     case "5":
                         //Find vehicles by reg number

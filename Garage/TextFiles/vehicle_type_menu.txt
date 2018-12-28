@@ -1,4 +1,5 @@
-﻿****Vehicle type menu****
+﻿
+****Vehicle type menu****
 
 0. Back to main menu
 1. Airplane

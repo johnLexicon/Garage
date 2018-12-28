@@ -27,6 +27,16 @@ namespace Garage.Biz
             return garage.Remove(vehicle);
         }
 
+        public bool RemoveByRegnr(string regNr)
+        {
+            T vehicle = Find(regNr);
+            if(vehicle is null)
+            {
+                return false;
+            }
+            return Remove(vehicle);
+        }
+
         public T Find(string regNr)
         {
             return garage.FirstOrDefault(v => v.RegNr.Equals(regNr));

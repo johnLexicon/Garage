@@ -14,13 +14,13 @@
     <Compile Remove="Garage\Biz\Vehicles\Motorcycle.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TextFiles\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="AddVehicleMenu.config" />
   </ItemGroup>
   <ItemGroup>
     <None Update="TextFiles\main_menu.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TextFiles\remove_vehicles_menu.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="TextFiles\start_menu.txt">
