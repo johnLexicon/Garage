@@ -77,7 +77,8 @@ namespace Garage.Biz
 
         public IEnumerable<IGrouping<Type, T>>  GetVehiclesGroupedByType()
         {
-            return garage.GroupBy(v => v.GetType());
+            var result = garage.Where(v => v != null);
+            return result.GroupBy(v => v.GetType());
         }
 
         public override string ToString()

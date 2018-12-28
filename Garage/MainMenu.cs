@@ -58,7 +58,7 @@ namespace Garage.Cmd
                         break;
                     case "2":
                         //List vehicle types and their count
-
+                        ListVehiclesMenu.Instance.ShowVehicleTypesAndCount(_garageHandler);
                         break;
                     case "3":
                         //Add vehicles
