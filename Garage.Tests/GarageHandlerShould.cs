@@ -21,7 +21,7 @@ namespace Garage.Tests
         }
 
         [Fact]
-        public void AddVehicle_CapacityOne_ReturnTrue()
+        public void AddOneVehicle_WhenCapacityEqualsOne()
         {
             //Arrange
             GarageHandler<Vehicle> sut = new GarageHandler<Vehicle>(garageCapacity: 1);
@@ -35,7 +35,19 @@ namespace Garage.Tests
         }
 
         [Fact]
-        public void RemoveVehicleByRef_ReturnTrue()
+        public void AddOneVehicle_WhenGarageIsAlreadyFull()
+        {
+            //Arrange
+            int garageCapacity = 0;
+            GarageHandler<Vehicle> sut = new GarageHandler<Vehicle>(garageCapacity);
+            Vehicle airplane = new Airplane("RRR123", "grey", wheelsNr: 2, enginesNr: 4);
+
+            //Assert
+            Assert.Throws<GarageIsFullException>(() => sut.Add(airplane));
+        }
+
+        [Fact]
+        public void RemoveVehicleByRef()
         {
             //Arrange
             GarageHandler<Vehicle> sut = new GarageHandler<Vehicle>(garageCapacity: 1);
@@ -50,7 +62,28 @@ namespace Garage.Tests
         }
 
         [Fact]
-        public void FindVehicleByRegnr_ReturnFoundVehicle()
+        public void RemoveVehiclesByRegNr()
+        {
+            //Arrange
+            GarageHandler<Vehicle> sut = new GarageHandler<Vehicle>(garageCapacity: 2);
+            int expectedSpacesAvailable = 0;
+            string regnr = "BBB321";
+            Vehicle boat = new Boat(regnr, "Red", wheelsNr: 0, length: 500);
+            Vehicle car = new Car("CCC123", "Green", wheelsNr: 4, fuelType: "Diesel");
+            //Add two vehicles
+            sut.Add(boat);
+            sut.Add(car);
+
+            //Act
+            bool vehicleRemoved = sut.RemoveByRegnr(regnr);
+            bool carRemoved = sut.RemoveByRegnr("CCC123");
+
+            //Assert
+            Assert.Equal(expectedSpacesAvailable, sut.SpacesAvailable);
+        }
+
+        [Fact]
+        public void FindVehicleByRegnr()
         {
             //Arrange
             GarageHandler<Vehicle> sut = new GarageHandler<Vehicle>(garageCapacity: 1);

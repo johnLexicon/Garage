@@ -8,7 +8,7 @@ namespace Garage.Tests
     public class GarageShould
     {
         [Fact]
-        public void AddVehicle_CapacityOne_ReturnTrue()
+        public void AddOneVehicle_WhenCapacityEqualsOne()
         {
             //Arrange
             Garage<Vehicle> sut = new Garage<Vehicle>(capacity: 1);
@@ -22,7 +22,7 @@ namespace Garage.Tests
         }
 
         [Fact]
-        public void AddVehicle_CapacityOne_SpacesAvailableEqualsZero()
+        public void AddOneVehicle_CheckThatSpacesAvailableEqualsZero()
         {
             //Arrange
             Garage<Vehicle> sut = new Garage<Vehicle>(capacity: 1);
