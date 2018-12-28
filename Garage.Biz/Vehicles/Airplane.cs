@@ -5,13 +5,13 @@ namespace Garage.Biz.Vehicles
     public class Airplane : Vehicle
     {
 
-        private byte enginesNr;
+        private int enginesNr;
 
-        public Airplane(string regNr, string color, byte wheelsNr, byte enginesNr) : base(regNr, color, wheelsNr)
+        public Airplane(string regNr, string color, int wheelsNr, int enginesNr) : base(regNr, color, wheelsNr)
         {
             EnginesNr = enginesNr;
         }
 
-        public byte EnginesNr { get => enginesNr; set => enginesNr = value; }
+        public int EnginesNr { get => enginesNr; set => enginesNr = value; }
     }
 }

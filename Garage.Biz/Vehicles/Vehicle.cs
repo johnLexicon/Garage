@@ -7,9 +7,9 @@ namespace Garage.Biz.Vehicles
     {
         private string regNr;
         private string color;
-        private short wheelsNr;
+        private int wheelsNr;
 
-        protected Vehicle(string regNr, string color, byte wheelsNr)
+        protected Vehicle(string regNr, string color, int wheelsNr)
         {
             RegNr = regNr;
             Color = color;
@@ -18,7 +18,7 @@ namespace Garage.Biz.Vehicles
 
         public string RegNr { get => regNr; set => regNr = value; }
         public string Color { get => color; set => color = value; }
-        public short WheelsNr { get => wheelsNr; set => wheelsNr = value; }
+        public int WheelsNr { get => wheelsNr; set => wheelsNr = value; }
     }
 
 }

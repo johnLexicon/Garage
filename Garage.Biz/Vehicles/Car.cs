@@ -6,7 +6,7 @@ namespace Garage.Biz.Vehicles
     {
         private string fuelType;
 
-        public Car(string regNr, string color, byte wheelsNr, string fuelType) : base(regNr, color, wheelsNr) => FuelType = fuelType;
+        public Car(string regNr, string color, int wheelsNr, string fuelType) : base(regNr, color, wheelsNr) => FuelType = fuelType;
 
         public string FuelType { get => fuelType; set => fuelType = value; }
     }

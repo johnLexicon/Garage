@@ -5,10 +5,10 @@ namespace Garage.Biz.Vehicles
     [Serializable]
     public class Boat : Vehicle
     {
-        private short length;
+        private int length;
 
-        public Boat(string regNr, string color, byte wheelsNr, short length) : base(regNr, color, wheelsNr) => Length = length;
+        public Boat(string regNr, string color, int wheelsNr, int length) : base(regNr, color, wheelsNr) => Length = length;
 
-        public short Length { get => length; set => length = value; }
+        public int Length { get => length; set => length = value; }
     }
 }

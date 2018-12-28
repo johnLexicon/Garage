@@ -6,10 +6,10 @@ namespace Garage.Biz.Vehicles
     [Serializable]
     public class Motorcycle : Vehicle
     {
-        private short cylinderVol;
+        private int cylinderVol;
 
-        public Motorcycle(string regNr, string color, byte wheelsNr, short cylinderVol) : base(regNr, color, wheelsNr) => CylinderVol = cylinderVol;
+        public Motorcycle(string regNr, string color, int wheelsNr, int cylinderVol) : base(regNr, color, wheelsNr) => CylinderVol = cylinderVol;
 
-        public short CylinderVol { get => cylinderVol; set => cylinderVol = value; }
+        public int CylinderVol { get => cylinderVol; set => cylinderVol = value; }
     }
 }

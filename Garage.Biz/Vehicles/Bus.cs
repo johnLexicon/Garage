@@ -4,10 +4,10 @@ namespace Garage.Biz.Vehicles
     [Serializable]
     public class Bus : Vehicle
     {
-        private byte seatsNr;
+        private int seatsNr;
 
-        public Bus(string regNr, string color, byte wheelsNr, byte seatsNr) : base(regNr, color, wheelsNr) => SeatsNr = seatsNr;
+        public Bus(string regNr, string color, int wheelsNr, int seatsNr) : base(regNr, color, wheelsNr) => SeatsNr = seatsNr;
 
-        public byte SeatsNr { get => seatsNr; set => seatsNr = value; }
+        public int SeatsNr { get => seatsNr; set => seatsNr = value; }
     }
 }
