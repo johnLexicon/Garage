@@ -43,9 +43,22 @@ namespace Garage.Cmd
                 return null;
             }
 
-            int capacity = CmdUtils.AskForInteger("Garage capacity: ");
-            var garageHandler = new GarageHandler<Vehicle>(garageCapacity: capacity);
+            GarageHandler<Vehicle> garageHandler = null;
 
+            while (true)
+            {
+                try
+                {
+                    int capacity = CmdUtils.AskForInteger("Garage capacity: ");
+                    garageHandler = new GarageHandler<Vehicle>(garageCapacity: capacity);
+                    break;
+                }
+                catch(ArgumentOutOfRangeException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            
             if (garageHandler != null)
             {
                 Console.WriteLine($"Garage with capacity {garageHandler.GarageCapacity} has been created.");
