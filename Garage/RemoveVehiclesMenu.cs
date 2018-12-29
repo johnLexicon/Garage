@@ -39,6 +39,10 @@ namespace Garage.Cmd
                 answer = CmdUtils.AskForString("Option: ");
                 switch (answer)
                 {
+                    case "0":
+                        //Quit
+                        CmdUtils.ShowMessageAndPressKeyToContinue("Exits Remove Vehicles Menu. Press key to continue...");
+                        break;
                     case "1":
                         //Remove vehicle by Reg number
                         RemoveVehicleByRegNr(garageHandler);
@@ -55,7 +59,16 @@ namespace Garage.Cmd
         {
             string regNr = string.Empty;
             regNr = CmdUtils.AskForString("Regnr: ");
-            garageHandler.RemoveByRegnr(regNr);
+            bool isRemoved = garageHandler.RemoveByRegnr(regNr);
+            if (isRemoved)
+            {
+                Console.WriteLine($"Vehicle with reg number {regNr} has been removed from garage.");
+            }
+            else
+            {
+                Console.WriteLine($"Was not able to remove vehicle with reg number {regNr}");
+            }
+            CmdUtils.ShowMessageAndPressKeyToContinue("Press key to continue...");
         }
     }
 }

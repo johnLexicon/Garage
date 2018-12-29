@@ -1,7 +1,7 @@
 ﻿
 ****Vehicle type menu****
 
-0. Back to main menu
+0. Exit Menu
 1. Airplane
 2. Boat
 3. Bus

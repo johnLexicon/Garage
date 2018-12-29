@@ -1,6 +1,6 @@
 ﻿
 ****Remove Vehicle Menu****
 
-0. Quit
+0. Exit Menu
 1. Remove vehicle by Reg number
 

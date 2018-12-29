@@ -38,6 +38,10 @@ namespace Garage.Cmd
                 answer = CmdUtils.AskForString("Option: ");
                 switch (answer)
                 {
+                    case "0":
+                        //Quit
+                        CmdUtils.ShowMessageAndPressKeyToContinue("Exits Find Vehicles Menu. Press key to continue...");
+                        break;
                     case "1":
                         //Find vehicle by Reg number
                         Vehicle vehicle = FindVehicleByRegNr(garageHandler);
@@ -53,7 +57,14 @@ namespace Garage.Cmd
 
         private void Show(Vehicle vehicle)
         {
+            if(vehicle is null)
+            {
+                CmdUtils.ShowMessageAndPressKeyToContinue("No vehicle found with that reg number. Press key to continue...");
+                return;
+            }
+            Console.WriteLine("****Found Vehicle***");
             Console.WriteLine(vehicle);
+            CmdUtils.ShowMessageAndPressKeyToContinue("Press key to continue...");
         }
 
         private Vehicle FindVehicleByRegNr(GarageHandler<Vehicle> garageHandler)

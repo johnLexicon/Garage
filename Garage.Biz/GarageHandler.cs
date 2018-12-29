@@ -47,7 +47,7 @@ namespace Garage.Biz
         public T Find(string regNr)
         {
             var result = garage.Where(v => v != null);
-            return result.FirstOrDefault(v => v.RegNr.Equals(regNr));
+            return result.FirstOrDefault(v => v.RegNr.ToLower().Equals(regNr.ToLower()));
         }
 
         //TODO: Try to solve this!!!

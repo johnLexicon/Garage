@@ -50,6 +50,7 @@ namespace Garage.Cmd
                 {
                     case "0":
                         //Quit
+                        CmdUtils.ShowMessageAndPressKeyToContinue("Exits Add Vehicle Menu. Press key to continue...");
                         finished = true;
                         break;
                     case "1":

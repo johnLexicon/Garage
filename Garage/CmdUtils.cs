@@ -65,6 +65,12 @@ namespace Garage.Cmd
             return result;
         }
 
+        public static void ShowMessageAndPressKeyToContinue(string prompt)
+        {
+            Console.WriteLine(prompt);
+            Console.ReadKey(intercept: true);
+        }
+
         public static string ReadTextFile(string path)
         {
             string content = string.Empty;

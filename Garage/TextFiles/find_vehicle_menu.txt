@@ -1,5 +1,5 @@
 ﻿
 ****Find Vehicle Menu****
 
-0. Quit
+0. Exit Menu
 1. Find vehicle by Reg number

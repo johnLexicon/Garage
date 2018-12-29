@@ -41,6 +41,7 @@ namespace Garage.Cmd
             //If user wants to quit
             if(answer.Equals("0"))
             {
+                CmdUtils.ShowMessageAndPressKeyToContinue("Exits Program. Press key to continue...");
                 return null;
             }
 
@@ -59,11 +60,14 @@ namespace Garage.Cmd
                     Console.WriteLine(e.Message);
                 }
             }
-            
+
             if (garageHandler != null)
             {
                 Console.WriteLine($"Garage with capacity {garageHandler.GarageCapacity} has been created.");
             }
+
+
+            CmdUtils.ShowMessageAndPressKeyToContinue("Press key to continue...");
 
             return garageHandler;
         }

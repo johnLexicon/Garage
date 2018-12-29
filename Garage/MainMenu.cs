@@ -70,6 +70,7 @@ namespace Garage.Cmd
                         break;
                     case "5":
                         //Find vehicles by reg number
+                        FindVehiclesMenu.Instance.FindVehicles(_garageHandler);
                         break;
                     case "6":
                         //Find vehicles by specific properties and values
