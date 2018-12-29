@@ -1,5 +1,6 @@
 ﻿
 ****Find Vehicles By Properties****
 
-0.Quit
+0. Show Search Result
 1. Add New Property/Value
+2. Show Available Properties For Search

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using Garage.Biz;
 using Garage.Biz.Vehicles;
+using System.Linq;
 
 namespace Garage.Cmd
 {
@@ -14,11 +16,26 @@ namespace Garage.Cmd
         private readonly string _findVehicleMenu;
         private readonly string _findVehiclesByPropertiesMenuPath = Path.Combine(Environment.CurrentDirectory, "TextFiles", "find_vehicles_by_properties.txt");
         private readonly string _findVehiclesByPropertiesMenu;
+        private List<string> _uniqueProperties;
 
         private FindVehiclesMenu()
         {
             _findVehicleMenu = CmdUtils.ReadTextFile(_findVehicleMenuPath);
             _findVehiclesByPropertiesMenu = CmdUtils.ReadTextFile(_findVehiclesByPropertiesMenuPath);
+            RetrieveAllVehiclesPropertyNames();
+        }
+
+        private void RetrieveAllVehiclesPropertyNames()
+        {
+            List<string> propertyNames = new List<string>();
+            propertyNames.AddRange(typeof(Airplane).GetProperties().Select(pi => pi.Name));
+            propertyNames.AddRange(typeof(Boat).GetProperties().Select(pi => pi.Name));
+            propertyNames.AddRange(typeof(Bus).GetProperties().Select(pi => pi.Name));
+            propertyNames.AddRange(typeof(Car).GetProperties().Select(pi => pi.Name));
+            propertyNames.AddRange(typeof(Motorcycle).GetProperties().Select(pi => pi.Name));
+            var hashSet = new HashSet<string>(propertyNames);
+
+            _uniqueProperties = hashSet.ToList();
         }
 
         internal static FindVehiclesMenu Instance
@@ -85,6 +102,10 @@ namespace Garage.Cmd
                         string propertyValue = CmdUtils.AskForString("Property value: ");
                         propValuePairs.Add(new Tuple<string, string>(propertyName, propertyValue));
                         break;
+                    case "2":
+                        //Show available properties for search
+                        ShowAllVehiclePropertyNames();
+                        break;
                     default:
                         Console.WriteLine($"{answer} is not an option!!");
                         break;
@@ -92,6 +113,24 @@ namespace Garage.Cmd
             } while (!answer.Equals("0"));
 
             List<Vehicle> vehicles = garageHandler.FindVehiclesByPropertyValues(propValuePairs);
+            Show(vehicles);
+        }
+
+        private void ShowAllVehiclePropertyNames()
+        {
+            Console.WriteLine("****Available Properties****");
+            _uniqueProperties.ForEach(Console.WriteLine);
+            CmdUtils.ShowMessageAndPressKeyToContinue("Press key to continue...");
+        }
+
+        private void Show(List<Vehicle> vehicles)
+        {
+            Console.WriteLine("****Vehicles****");
+            foreach(var vehicle in vehicles)
+            {
+                Console.WriteLine($"Vehicle type: {vehicle.GetType().Name}, {vehicle}");
+            }
+            CmdUtils.ShowMessageAndPressKeyToContinue("Press key to continue...");
         }
 
         private void Show(Vehicle vehicle)

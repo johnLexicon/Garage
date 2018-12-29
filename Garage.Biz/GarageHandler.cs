@@ -61,7 +61,7 @@ namespace Garage.Biz
             List<T> result = new List<T>();
 
 
-            foreach (var vehicle in garage)
+            foreach (var vehicle in garage.Where(v => v != null))
             {
                 //Retrieves the names of the properties in the vehicle.
                 string[] propertiesInVehicle = vehicle.GetType().GetProperties().Select(pi => pi.Name).ToArray();
@@ -76,7 +76,7 @@ namespace Garage.Biz
                     bool sameValues = propValuePairs.All((pvp) =>
                     {
                         var value = vehicle.GetType().GetProperty(pvp.Item1).GetValue(vehicle);
-                        return value.ToString().Equals(pvp.Item2);
+                        return value.ToString().ToLower().Equals(pvp.Item2.ToLower());
                     });
                     //If the vehicle is a match then it is added to the result list.
                     if (sameValues)
