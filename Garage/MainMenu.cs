@@ -69,11 +69,8 @@ namespace Garage.Cmd
                         RemoveVehiclesMenu.Instance.RemoveVehicles(_garageHandler);
                         break;
                     case "5":
-                        //Find vehicles by reg number
+                        //Find vehicles (by regnr and by properties)
                         FindVehiclesMenu.Instance.FindVehicles(_garageHandler);
-                        break;
-                    case "6":
-                        //Find vehicles by specific properties and values
                         break;
                     default:
                         Console.WriteLine($"{option} is not and option!!");

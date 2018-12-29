@@ -131,7 +131,7 @@ namespace Garage.Tests
 
             var props = new List<Tuple<string, string>>
             {
-                new Tuple<string, string>("Color", "black"),
+                new Tuple<string, string>("FuelType", "Diesel"),
                 new Tuple<string, string>("WheelsNr", "4")
             };
 
@@ -139,7 +139,7 @@ namespace Garage.Tests
             var result = sut.FindVehiclesByPropertyValues(props);
 
             //Assert
-            Assert.True(true);
+            Assert.Equal(2, result.Count);
         }
 
         private void AddVehiclesToGarage(ICollection<Vehicle> vehicles, GarageHandler<Vehicle> handler)

@@ -1,5 +1,6 @@
 ﻿
 ****Find Vehicle Menu****
 
-0. Exit Menu
-1. Find vehicle by Reg number
+0. Exit Menu.
+1. Find vehicle by Reg Number.
+2. Find vehicles by specific properties and values.

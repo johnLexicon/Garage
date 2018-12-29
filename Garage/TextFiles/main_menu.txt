@@ -6,7 +6,4 @@
 2. List vehicle types and their count.
 3. Add vehicles.
 4. Remove vehicles.
-5. Find vehicles by reg number.
-6. Find vehicles by specific properties and values.
-
-
+5. Find vehicles.

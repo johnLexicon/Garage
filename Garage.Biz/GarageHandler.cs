@@ -50,23 +50,43 @@ namespace Garage.Biz
             return result.FirstOrDefault(v => v.RegNr.ToLower().Equals(regNr.ToLower()));
         }
 
-        //TODO: Try to solve this!!!
-        public IEnumerable<T> FindVehiclesByPropertyValues(List<Tuple<string, string >> props)
+        /// <summary>
+        /// Finds the vehicles by property values. Uses reflection for comparing the properties in the vehicles.
+        /// </summary>
+        /// <returns>The vehicles that contain all the properties and their values from the argument propValuePairs</returns>
+        /// <param name="propValuePairs">A list with tuples PropertyName and Value pairs</param>
+        public List<T> FindVehiclesByPropertyValues(List<Tuple<string, string >> propValuePairs)
         {
+            //The vehicles that contain all the properties and it values from the propValuePairs
+            List<T> result = new List<T>();
 
-            List<string> found = new List<string>();
 
-            foreach(var vehicle in garage)
+            foreach (var vehicle in garage)
             {
-                PropertyInfo pInfo = vehicle.GetType().GetProperty("Color");
-                if(pInfo != null)
+                //Retrieves the names of the properties in the vehicle.
+                string[] propertiesInVehicle = vehicle.GetType().GetProperties().Select(pi => pi.Name).ToArray();
+
+                //Checks that all the properties in the propValuePairs exists in the vehicle properties
+                bool allIncluded = propValuePairs.Select(pvp => pvp.Item1).All(propertiesInVehicle.Contains);
+
+                //If the vehicle contains all the properties
+                if (allIncluded)
                 {
-                    var value = pInfo.GetValue(vehicle);
-                    var content = "whatever";
+                    //Checks that all the properties and their values are equal to the ones in the vehicle.
+                    bool sameValues = propValuePairs.All((pvp) =>
+                    {
+                        var value = vehicle.GetType().GetProperty(pvp.Item1).GetValue(vehicle);
+                        return value.ToString().Equals(pvp.Item2);
+                    });
+                    //If the vehicle is a match then it is added to the result list.
+                    if (sameValues)
+                    {
+                        result.Add(vehicle);
+                    }
                 }
             }
 
-            return garage;
+            return result;
         }
 
         //TODO: Maybe change this to enumerable instead of returning a list.
