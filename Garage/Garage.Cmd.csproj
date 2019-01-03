@@ -17,6 +17,9 @@
     <None Remove="AddVehicleMenu.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="TextFiles\find_vehicles_by_properties.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="TextFiles\find_vehicle_menu.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

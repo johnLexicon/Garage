@@ -83,10 +83,7 @@ namespace Garage.Cmd
         private void FindVehiclesByPropertyValues(GarageHandler<Vehicle> garageHandler)
         {
             List<Tuple<string, string>> propValuePairs = new List<Tuple<string, string>>();
-            //Dictionary<string, string> existingProperties = new Dictionary<string, string>
-            //{
-            //    {"1", PropertyI}
-            //}
+
             string answer = string.Empty;
             do
             {
