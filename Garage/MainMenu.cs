@@ -62,7 +62,14 @@ namespace Garage.Cmd
                         break;
                     case "3":
                         //Add vehicles
-                        AddVehiclesMenu.Instance.AddVehicles(_garageHandler);
+                        if(_garageHandler.SpacesAvailable == 0)
+                        {
+                            Console.WriteLine("No spaces available, garage is full!!");
+                        }
+                        else
+                        {
+                            AddVehiclesMenu.Instance.AddVehicles(_garageHandler);
+                        }
                         break;
                     case "4":
                         //Remove vehicles

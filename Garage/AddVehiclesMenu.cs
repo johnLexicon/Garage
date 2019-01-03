@@ -44,6 +44,12 @@ namespace Garage.Cmd
             do
             {
 
+                if(garageHandler.SpacesAvailable == 0)
+                {
+                    Console.WriteLine("No more spaces available, garage is full!!");
+                    return;
+                }
+
                 Console.WriteLine(_vehicleTypeMenu);
                 answer = CmdUtils.AskForString("Choose type of vehicle to create: ");
                 switch (answer)
@@ -82,6 +88,8 @@ namespace Garage.Cmd
                         Console.WriteLine($"{answer} is not an option!!");
                         break;
                 }
+
+                Console.WriteLine("Vehicle created!!");
 
             } while (!finished);
 
