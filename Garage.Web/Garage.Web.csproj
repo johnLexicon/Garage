@@ -17,6 +17,7 @@
     <Folder Include="Services\" />
     <Folder Include="wwwroot\" />
     <Folder Include="Views\Shared\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove=".DS_Store" />
