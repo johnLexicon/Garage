@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Garage.Web
@@ -26,10 +27,22 @@ namespace Garage.Web
                 app.UseDeveloperExceptionPage();
             }
 
+            //Will look after static files in the wwwroot folder and return them when needed.
+            app.UseStaticFiles();
+
+            //MVC with default route
+            app.UseMvc(ConfigureRoutes);
+
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                context.Response.ContentType = "text/plain";
+                await context.Response.WriteAsync("Not found!");
             });
+        }
+
+        private void ConfigureRoutes(IRouteBuilder routeBuilder)
+        {
+            routeBuilder.MapRoute("Default", "{controller=Home}/{action=Index}/{id?}");
         }
     }
 }
